@@ -4,13 +4,25 @@
 
 ## Windows에서 실행
 
-### A) GitHub Actions로 빌드 (권장)
+### A) GitHub Release에서 받기 (권장)
 
-1. GitHub에 리포지토리 push
-2. Actions 탭에서 **Build Windows EXE** 워크플로 실행 (push 시 자동, 또는 Run workflow)
-3. 완료 후 Artifacts에서 `CSVColumnCompare-windows` 다운로드 → `CSVColumnCompare.exe` 실행
+1. https://github.com/romico/data-compare-tool/releases 에서 최신 `CSVColumnCompare.exe` 다운로드
+2. 더블클릭으로 실행
 
-### B) GitLab CI로 빌드
+새 버전 배포:
+
+```bash
+git tag v1.0.1
+git push origin v1.0.1
+```
+
+또는 Actions → **Build Windows EXE** → Run workflow → version에 `v1.0.1` 입력
+
+### B) GitHub Actions artifact
+
+태그 없이 수동 실행하면 Artifacts에서도 받을 수 있습니다.
+
+### C) GitLab CI로 빌드
 
 1. GitLab에 리포지토리 push
 2. CI/CD → Pipelines에서 `build-windows-exe` 확인
@@ -18,7 +30,7 @@
 
 > GitLab Windows runner(`saas-windows-medium-amd64`)가 없으면 `.gitlab-ci.yml`의 `tags`를 보유 runner에 맞게 바꾸세요.
 
-### C) 로컬 Windows에서 빌드
+### D) 로컬 Windows에서 빌드
 
 1. [Python 3.11+](https://www.python.org/downloads/) 설치 (**Add python.exe to PATH**)
 2. `build_windows.bat` 실행 → `dist\CSVColumnCompare.exe`
