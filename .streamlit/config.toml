@@ -1,0 +1,4 @@
+[server]
+# 대용량 CSV 업로드 허용 (MB)
+maxUploadSize = 1024
+maxMessageSize = 1024

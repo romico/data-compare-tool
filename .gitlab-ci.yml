@@ -1,0 +1,26 @@
+# Windows 단독 실행 파일(.exe) 빌드
+# GitLab.com SaaS Windows runner 또는 Windows shared runner가 필요합니다.
+# tags는 사용 중인 runner에 맞게 수정하세요.
+
+stages:
+  - build
+
+build-windows-exe:
+  stage: build
+  tags:
+    - saas-windows-medium-amd64
+  image: mcr.microsoft.com/windows/servercore:ltsc2022
+  rules:
+    - if: $CI_COMMIT_BRANCH == "master" || $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "web"
+  before_script:
+    - python --version
+    - python -m pip install --upgrade pip
+    - pip install -r requirements-desktop.txt
+  script:
+    - pyinstaller --noconfirm CSVColumnCompare.spec
+  artifacts:
+    name: "CSVColumnCompare-windows"
+    paths:
+      - dist/CSVColumnCompare.exe
+    expire_in: 2 weeks
