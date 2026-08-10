@@ -2,6 +2,24 @@
 
 외부 CSV 두 파일을 선택하고, 각 파일에서 컬럼을 골라 전체 합계를 비교합니다.
 
+## 웹 (Cloudflare Pages · 무료)
+
+- URL: https://data-compare-tool.pages.dev/
+- 파일은 서버로 올라가지 않고 **브라우저에서만** 처리됩니다.
+- Cloudflare Pages 무료 플랜(정적 호스팅) 사용
+
+로컬에서 웹 미리보기:
+
+```bash
+npx --yes serve web
+```
+
+재배포:
+
+```bash
+npx wrangler pages deploy ./web --project-name data-compare-tool --commit-dirty=true
+```
+
 ## Windows에서 실행
 
 ### A) GitHub Release에서 받기 (권장)
@@ -50,7 +68,7 @@ pyinstaller --noconfirm CSVColumnCompare.spec
 open dist/CSVColumnCompare
 ```
 
-## 웹(Streamlit)
+## 웹(Streamlit · 로컬)
 
 ```bash
 pip install -r requirements.txt

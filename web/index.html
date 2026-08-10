@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSV 컬럼 합계 비교</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header>
+        <h1>CSV 컬럼 합계 비교</h1>
+        <p>
+          파일은 서버로 전송되지 않고 <strong>브라우저에서만</strong> 처리됩니다.
+          (Cloudflare Pages 무료 정적 호스팅)
+        </p>
+      </header>
+
+      <label class="field">
+        <span>인코딩</span>
+        <select id="encoding">
+          <option value="utf-8">utf-8 / utf-8-sig</option>
+          <option value="euc-kr">cp949 / euc-kr</option>
+        </select>
+      </label>
+
+      <section class="panels">
+        <article class="panel" id="panel-a">
+          <h2>파일 A</h2>
+          <input type="file" id="file-a" accept=".csv,text/csv" />
+          <p class="meta" id="meta-a">선택된 파일 없음</p>
+          <label class="field">
+            <span>컬럼</span>
+            <select id="column-a" disabled></select>
+          </label>
+        </article>
+
+        <article class="panel" id="panel-b">
+          <h2>파일 B</h2>
+          <input type="file" id="file-b" accept=".csv,text/csv" />
+          <p class="meta" id="meta-b">선택된 파일 없음</p>
+          <label class="field">
+            <span>컬럼</span>
+            <select id="column-b" disabled></select>
+          </label>
+        </article>
+      </section>
+
+      <button id="compare" type="button" disabled>합계 비교 실행</button>
+      <p class="status" id="status"></p>
+      <section class="result" id="result" hidden></section>
+    </main>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
